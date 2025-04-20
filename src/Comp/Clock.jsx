@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { tower } from './Root';
 
 const Clock = () => {
     const [hour,setHour] = useState(0);
     const [min,setMin] = useState(0);
     const [sec,setSec] = useState(0);
-
+    const {mode} = useContext(tower);
     useEffect(()=>{
         setInterval(() => {
             const time = new Date();
@@ -15,7 +16,7 @@ const Clock = () => {
     },[])
 
     return (
-        <div className='  bg-white/10 backdrop-blur-md rounded-2xl p-2 border-2 border-white/20 shadow-lg'>
+        <div className={`  ${mode?"bg-[#001311]":"bg-white border border-[#132523]"} rounded-2xl p-2 border-transparent shadow-lg`}>
 
              <div className="lg:flex  md:flex gap-10 w-72 mx-auto justify-center  ">
                 <div></div>
