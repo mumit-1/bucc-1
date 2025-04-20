@@ -20,18 +20,18 @@ const Root = () => {
       <div className={`${mode ? "bg-[#132523]" : "bg-gray-200 text-black"}`}>
         <div className="max-w-screen-xl mx-auto h-screen px-2">
           <div className={`${show ? "block" : "hidden"} py-4`}>
-            <div className={`  flex gap-3 `}>
+            <div className={`  lg:flex md:flex gap-3 `}>
               <div className="flex-1">
                 <Clock
                   className={`${mode ? "bg-[#001311]" : "bg-white h-full"}`}
                 ></Clock>
               </div>
-              <div className="flex  gap-3">
-                <Calender></Calender>
+              <div className="flex lg:mt-0 md:mt-0 mt-3 gap-3">
+                <Calender className=""></Calender>
                 {mode ? (
                   <button
                     onClick={() => setMode(!mode)}
-                    className={`btn w-16 text-4xl h-20  rounded-3xl p-2 border-transparent shadow-lg ${
+                    className={`btn text-4xl h-20 lg:w-16 md:w-16 w-1/2  rounded-3xl p-2 border-transparent shadow-lg ${
                       mode ? "bg-[#001311]" : "bg-white border-[#132523]"
                     }`}
                   >
@@ -43,7 +43,7 @@ const Root = () => {
                       mode
                         ? "text-white bg-[#001311] "
                         : "bg-white text-black border-[#132523]"
-                    } btn w-16 text-4xl h-20  rounded-3xl p-2 border-transparent shadow-lg`}
+                    } btn  text-4xl h-20 lg:w-16 md:w-16 w-1/2 rounded-3xl p-2 border-transparent shadow-lg `}
                     onClick={() => setMode(!mode)}
                   >
                     {" "}

@@ -16,9 +16,9 @@ const Clock = () => {
     },[])
 
     return (
-        <div className={`  ${mode?"bg-[#001311]":"bg-white border border-[#132523]"} rounded-3xl p-2 border-transparent shadow-lg`}>
+        <div className={`  ${mode?"bg-[#001311]":"bg-white border border-[#132523]"}  rounded-3xl p-2 border-transparent shadow-lg`}>
 
-             <div className="lg:flex  md:flex gap-10 w-72 mx-auto justify-center  ">
+             <div className="flex gap-1  mx-auto justify-center  ">
                 <div></div>
         <div className=''>
           <p className='text-4xl'>{hour < 10 ? `0${hour}`:`${hour}`} </p>

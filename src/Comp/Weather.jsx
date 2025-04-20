@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { tower } from './Root';
 import { FiSunrise, FiSunset } from "react-icons/fi";
 import { MdOutlineWaves } from "react-icons/md";
+import { IoIosSearch } from "react-icons/io";
 const weatherIconsDay = {
   Clear: "https://raw.githubusercontent.com/Makin-Things/weather-icons/master/static/clear-day.svg",
   Clouds: "https://raw.githubusercontent.com/Makin-Things/weather-icons/master/static/cloudy-1-day.svg",
@@ -22,15 +23,16 @@ const weatherIconsNight = {
 };
 
 const Weather = () => {
+  const [sure,setSure] = useState("dhaka");
   const [data, setData] = useState(null);
   const {mode}= useContext(tower);
   useEffect(() => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=Dhaka&appid=54e1a12935effbdc259c8047a664335a`
+      `https://api.openweathermap.org/data/2.5/weather?q=${sure}&appid=54e1a12935effbdc259c8047a664335a`
     )
       .then((res) => res.json())
       .then((dataX) => setData(dataX));
-  }, []);
+  }, [sure]);
   if (!data || !data.weather || !data.main || !data.sys) {
     return (
       <div className="text-center text-white mt-10">Loading weather...</div>
@@ -38,6 +40,7 @@ const Weather = () => {
   }
 
   const weatherMain = data.weather[0].main;
+  
   const timePro = data.weather[0].icon[2];
   let icon ="";
   if(timePro==="d"){
@@ -59,12 +62,25 @@ const Weather = () => {
 
   const sunrise = toTime(data.sys.sunrise, data.timezone);
   const sunset = toTime(data.sys.sunset, data.timezone);
-
+  
+    const handleSubmit = (e) =>{
+      e.preventDefault();
+      const name = e.target.name.value;
+      console.log(name);
+      fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=54e1a12935effbdc259c8047a664335a`
+      )
+      .then((res) => res.json())
+      .then((dataX2) => {
+        dataX2.cod ==="404" ? null: setSure(name)
+        console.log(dataX2,sure);
+      });
+    }
   return (
-    <div className={`bg-[#001311] max-w-sm  p-6 rounded-2xl shadow-lg space-y-4 ${mode?"bg-[#001311]":"bg-white border border-[#132523]"} rounded-3xl p-2 border-transparent shadow-lg`}>
-      <div className="flex items-center space-x-4">
-        <img src={icon} alt={weatherMain} className="w-16 h-16" />
-        <div>
+    <div className={`bg-[#001311] lg:max-w-sm  p-6 rounded-2xl shadow-lg space-y-4 ${mode?"bg-[#001311]":"bg-white border border-[#132523]"} rounded-3xl p-2 border-transparent shadow-lg`}>
+      <div className="flex items-center flex-col ">
+        <div><img src={icon} alt={weatherMain} className="w-24" /></div>
+        <div className="flex justify-center items-center flex-col">
           <h2 className="text-3xl font-semibold">
             {kelvinToCelsius(data.main.temp)}°C
           </h2>
@@ -81,13 +97,13 @@ const Weather = () => {
         <div className="text-center">
           <p className="flex justify-center items-center gap-2"><FiSunrise className={`text-xl bg-[#02ffe2] rounded-full w-8 h-8 p-1.5 text-black`}/>{sunrise}</p>
         </div>
-        <p className="text-gray-400">——------</p>
+        <p className="text-gray-400">---</p>
         <div className="text-center">
           <p className="flex justify-center items-center gap-2">{sunset}<FiSunset className="text-xl text-black bg-[#02ffe2] rounded-full w-8 h-8 p-1.5"/></p>
         </div>
       </div>
-      ${mode?"bg-[#112120]":"bg-gray-200"} 
-      <div className={`flex justify-between items-center  px-4 py-3 rounded-2xl`}>
+      
+      <div className={`flex justify-between items-center rounded-2xl`}>
         <div className="flex justify-center items-center gap-3 w-full">
           <div className="flex justify-center items-center flex-col w-1/2">
             <div className={`w-full flex px-1.5 py-2 rounded-full items-center space-x-1 ${mode?"bg-[#112120]":"bg-gray-200"}  rounded-xl`}>
@@ -99,12 +115,16 @@ const Weather = () => {
             </div>
           </div>
           <div className="w-1/2 h-full">
-            <div className={` px-10 h-[165px] rounded-2xl  ${mode?"bg-[#112120]":"bg-gray-200"}  rounded-xl`}>
-            <p className="flex flex-col justify-center items-center text-xl"><img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/wind.svg" alt="" />{data.wind.speed} km/h</p>
+            <div className={` px-1 h-[165px] rounded-2xl  ${mode?"bg-[#112120]":"bg-gray-200"}  rounded-xl`}>
+            <p className="flex flex-col justify-center items-center text-xl"><img src="https://raw.githubusercontent.com/Makin-Things/weather-icons/master/animated/wind.svg" alt="" className="py-2.5"/><span className="px-9">{data.wind.speed}</span> km/h</p><p className="text-center text-xs opacity-50 pt-2.5">Wind Speed</p>
             </div>
           </div>
         </div>
       </div>
+      <form onSubmit={handleSubmit} className="flex gap-2.5" >
+        <input type="text" name="name" id="" className={` ${mode?"bg-[#112120]":"bg-gray-200"} p-1.5 rounded-full pl-3 w-full`} placeholder="Enter City Name"/>
+        <button className=" text-black bg-[#02ffe2] rounded-full w-9 h-9 p-2.5"><IoIosSearch /></button>
+      </form>
     </div>
   );
 };
