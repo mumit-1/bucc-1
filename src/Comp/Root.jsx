@@ -17,7 +17,7 @@ const Root = () => {
   }, 1200);
   return (
     <tower.Provider value={food}>
-      <div className={`${mode ? "bg-[#132523]" : "bg-white text-black"}`}>
+      <div className={`${mode ? "bg-[#132523]" : "bg-gray-200 text-black"}`}>
         <div className="max-w-screen-xl mx-auto h-screen px-2">
           <div className={`${show ? "block" : "hidden"} py-4`}>
             <div className={`  flex gap-3 `}>
@@ -31,7 +31,7 @@ const Root = () => {
                 {mode ? (
                   <button
                     onClick={() => setMode(!mode)}
-                    className={`btn w-16 text-4xl h-20  rounded-2xl p-2 border-transparent shadow-lg ${
+                    className={`btn w-16 text-4xl h-20  rounded-3xl p-2 border-transparent shadow-lg ${
                       mode ? "bg-[#001311]" : "bg-white border-[#132523]"
                     }`}
                   >
@@ -43,7 +43,7 @@ const Root = () => {
                       mode
                         ? "text-white bg-[#001311] "
                         : "bg-white text-black border-[#132523]"
-                    } btn w-16 text-4xl h-20  rounded-2xl p-2 border-transparent shadow-lg`}
+                    } btn w-16 text-4xl h-20  rounded-3xl p-2 border-transparent shadow-lg`}
                     onClick={() => setMode(!mode)}
                   >
                     {" "}

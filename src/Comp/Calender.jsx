@@ -24,13 +24,13 @@ const Calender = () => {
     },[])
     return (
         <div>
-            <div className={` h-20 ${mode?"bg-[#001311]":"bg-white border border-[#132523]"} rounded-2xl p-2 border-transparent shadow-lg`}>
+            <div className={` h-20 ${mode?"bg-[#001311]":"bg-white border border-[#132523]"} rounded-3xl p-2 border-transparent shadow-lg`}>
                 <div className='flex gap-4 px-3 justify-center items-center'>
                     <div>
-                        <p className='text-3xl'>{date}</p>
+                        <p className={`text-2xl `}><span className=' rounded-xl px-1'>{date}</span></p>
                         <p>{day}</p>
                     </div>
-                    <div className="w-1 h-12 rounded-xl bg-gray-400"></div>
+                    <div className="w-1 h-12 rounded-xl bg-[#02ffe2]"></div>
                     <div>
                         <p>{month}</p>
                         <p>{year}</p>

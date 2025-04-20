@@ -16,7 +16,7 @@ const Clock = () => {
     },[])
 
     return (
-        <div className={`  ${mode?"bg-[#001311]":"bg-white border border-[#132523]"} rounded-2xl p-2 border-transparent shadow-lg`}>
+        <div className={`  ${mode?"bg-[#001311]":"bg-white border border-[#132523]"} rounded-3xl p-2 border-transparent shadow-lg`}>
 
              <div className="lg:flex  md:flex gap-10 w-72 mx-auto justify-center  ">
                 <div></div>
