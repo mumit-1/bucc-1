@@ -4,7 +4,8 @@ import Loader from "./Loader";
 import { FaMoon } from "react-icons/fa";
 import { LuSun } from "react-icons/lu";
 import Calender from "./Calender";
-import Weather from "./Weather";
+import Weather from "./Weather"; 
+import SongPlayer from './SongPlayer';
 export const tower = createContext();
 const Root = () => {
   const [mode, setMode] = useState(false);
@@ -18,7 +19,7 @@ const Root = () => {
   return (
     <tower.Provider value={food}>
       <div className={`${mode ? "bg-[#132523]" : "bg-gray-200 text-black"}`}>
-        <div className="max-w-screen-xl mx-auto h-screen px-2">
+        <div className="max-w-screen-xl mx-auto lg:h-screen md:h-screen px-2">
           <div className={`${show ? "block" : "hidden"} py-4`}>
             <div className={`  lg:flex md:flex gap-3 `}>
               <div className="flex-1">
@@ -52,8 +53,11 @@ const Root = () => {
                 )}
               </div>
             </div>
-            <div className="py-3">
+            <div className="py-3 w-full lg:flex md:flex items-start gap-3">
               <Weather></Weather>
+              <div className="lg:mb-0 md:mb-0 lg:mt-0 md:mt-0 mt-3 mb-10">
+                <SongPlayer></SongPlayer>
+              </div>
             </div>
           </div>
 

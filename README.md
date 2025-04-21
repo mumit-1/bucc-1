@@ -1,12 +1,26 @@
-# React + Vite
+React + Vite Web Widget
+This is a React-based web widget built using Vite for blazing-fast development. The widget includes a collection of interactive tools and features designed to enhance your browser experience.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+✨ Features
+🕒 Clock – Displays the current time in real-time
 
-Currently, two official plugins are available:
+📅 Calendar – Simple and intuitive date display
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🌗 Dark Mode / Light Mode – Toggle between themes for visual comfort
 
-## Expanding the ESLint configuration
+🌦️ Weather Display – Shows current weather information
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🎵 Song Player – Basic music playback functionality
+
+🛠️ Technologies Used
+React – For building UI components
+
+Vite – For lightning-fast bundling and hot module replacement
+
+Tailwind CSS – For modern, responsive styling
+
+React Icons – For icons across the widget
+
+OpenWeatherMap API – For fetching real-time weather data
+
+Local Storage – To persist theme preferences

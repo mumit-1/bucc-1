@@ -3,6 +3,7 @@ import { tower } from './Root';
 import { FiSunrise, FiSunset } from "react-icons/fi";
 import { MdOutlineWaves } from "react-icons/md";
 import { IoIosSearch } from "react-icons/io";
+import { BsUmbrellaFill } from "react-icons/bs";
 const weatherIconsDay = {
   Clear: "https://raw.githubusercontent.com/Makin-Things/weather-icons/master/static/clear-day.svg",
   Clouds: "https://raw.githubusercontent.com/Makin-Things/weather-icons/master/static/cloudy-1-day.svg",
@@ -107,11 +108,11 @@ const Weather = () => {
         <div className="flex justify-center items-center gap-3 w-full">
           <div className="flex justify-center items-center flex-col w-1/2">
             <div className={`w-full flex px-1.5 py-2 rounded-full items-center space-x-1 ${mode?"bg-[#112120]":"bg-gray-200"}  rounded-xl`}>
-              <img src="/src/assets/umbrella.png" alt="Rain" className={`w-7 h-7 bg-[#02ffe2] rounded-full p-1`} />
+              <BsUmbrellaFill className={`w-7 h-7 bg-[#02ffe2] rounded-full p-1.5`} />
               <p>Rain: {data.rain?.["1h"] ? "Yes" : "No"}</p>
             </div>
             <div className={`${mode?"bg-[#112120]":"bg-gray-200"} w-full rounded-2xl mt-3 py-4`}>
-            <div lassName="flex flex-col justify-center items-center text-xl"><MdOutlineWaves  className="w-20 text-3xl mx-auto shadow-2xl"/><p className="text-center  px-2 py-0.5 text-lg">{data.main.humidity}%</p><p className="text-center text-xs opacity-50">Humidity</p></div>
+            <div className="flex flex-col justify-center items-center text-xl"><MdOutlineWaves  className="w-20 text-3xl mx-auto shadow-2xl"/><p className="text-center  px-2 py-0.5 text-lg">{data.main.humidity}%</p><p className="text-center text-xs opacity-50">Humidity</p></div>
             </div>
           </div>
           <div className="w-1/2 h-full">

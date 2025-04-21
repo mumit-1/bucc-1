@@ -24,12 +24,12 @@ const Clock = () => {
           <p className='text-4xl'>{hour < 10 ? `0${hour}`:`${hour}`} </p>
           <p className=''>Hour</p>
         </div>
-        <div className='text-4xl'>:</div>
+        <div className='text-4xl text-[#02ffe2]'>:</div>
         <div className='ml-5'>
           <p  className='text-4xl'>{min < 10 ? `0${min}`:`${min}`} </p>
           <p  className=''>Minute</p>
         </div>
-        <div className='text-4xl'>:</div>
+        <div className='text-4xl text-[#02ffe2]'>:</div>
         <div className='ml-5'>
           <p className='text-4xl'>{sec < 10 ? `0${sec}`:`${sec}`} </p>
           <p  className=''>Second</p>
