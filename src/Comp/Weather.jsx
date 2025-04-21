@@ -29,7 +29,7 @@ const Weather = () => {
   const {mode}= useContext(tower);
   useEffect(() => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${sure}&appid=54e1a12935effbdc259c8047a664335a`
+      `https://api.openweathermap.org/data/2.5/weather?q=${sure}&appid=${import.meta.env.VITE_apikey}`
     )
       .then((res) => res.json())
       .then((dataX) => setData(dataX));
@@ -67,14 +67,12 @@ const Weather = () => {
     const handleSubmit = (e) =>{
       e.preventDefault();
       const name = e.target.name.value;
-      console.log(name);
       fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=54e1a12935effbdc259c8047a664335a`
       )
       .then((res) => res.json())
       .then((dataX2) => {
         dataX2.cod ==="404" ? null: setSure(name)
-        console.log(dataX2,sure);
       });
     }
   return (
@@ -107,7 +105,7 @@ const Weather = () => {
       <div className={`flex justify-between items-center rounded-2xl`}>
         <div className="flex justify-center items-center gap-3 w-full">
           <div className="flex justify-center items-center flex-col w-1/2">
-            <div className={`w-full flex px-1.5 py-2 rounded-full items-center space-x-1 ${mode?"bg-[#112120]":"bg-gray-200"}  rounded-xl`}>
+            <div className={`w-full flex px-1.5 py-2 rounded-full items-center space-x-1 ${mode?"bg-[#112120]":"bg-gray-200"}  rounded-2xl`}>
               <BsUmbrellaFill className={`w-7 h-7 bg-[#02ffe2] rounded-full p-1.5`} />
               <p>Rain: {data.rain?.["1h"] ? "Yes" : "No"}</p>
             </div>

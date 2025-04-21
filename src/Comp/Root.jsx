@@ -29,28 +29,30 @@ const Root = () => {
               </div>
               <div className="flex lg:mt-0 md:mt-0 mt-3 gap-3">
                 <Calender className=""></Calender>
-                {mode ? (
-                  <button
-                    onClick={() => setMode(!mode)}
-                    className={`btn text-4xl h-20 lg:w-16 md:w-16 w-1/2  rounded-3xl p-2 border-transparent shadow-lg ${
-                      mode ? "bg-[#001311]" : "bg-white border-[#132523]"
-                    }`}
-                  >
-                    <FaMoon />
-                  </button>
-                ) : (
-                  <button
-                    className={`${
-                      mode
-                        ? "text-white bg-[#001311] "
-                        : "bg-white text-black border-[#132523]"
-                    } btn  text-4xl h-20 lg:w-16 md:w-16 w-1/2 rounded-3xl p-2 border-transparent shadow-lg `}
-                    onClick={() => setMode(!mode)}
-                  >
-                    {" "}
-                    <LuSun />
-                  </button>
-                )}
+                <div className="w-full">
+                  {mode ? (
+                    <button
+                      onClick={() => setMode(!mode)}
+                      className={`btn text-4xl h-20 lg:w-16 md:w-16 w-full  rounded-3xl p-2 border-transparent shadow-lg ${
+                        mode ? "bg-[#001311]" : "bg-white border-[#132523]"
+                      }`}
+                    >
+                      <FaMoon />
+                    </button>
+                  ) : (
+                    <button
+                      className={`${
+                        mode
+                          ? "text-white bg-[#001311] "
+                          : "bg-white text-black border-[#132523]"
+                      } btn  text-4xl h-20 lg:w-16 md:w-16 w-full rounded-3xl p-2 border-transparent shadow-lg `}
+                      onClick={() => setMode(!mode)}
+                    >
+                      {" "}
+                      <LuSun />
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
             <div className="py-3 w-full lg:flex md:flex items-start gap-3">
