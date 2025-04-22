@@ -32,8 +32,6 @@ const Loader = () => {
 
 
 
-
-
     return (
         <div className='h-screen w-10 mx-auto pt-44'>
                <PropagateLoader color='#02ffe2'/>
