@@ -4,6 +4,7 @@ import { FiSunrise, FiSunset } from "react-icons/fi";
 import { MdOutlineWaves } from "react-icons/md";
 import { IoIosSearch } from "react-icons/io";
 import { BsUmbrellaFill } from "react-icons/bs";
+import { DateTime } from "luxon";
 const weatherIconsDay = {
   Clear: "https://raw.githubusercontent.com/Makin-Things/weather-icons/master/static/clear-day.svg",
   Clouds: "https://raw.githubusercontent.com/Makin-Things/weather-icons/master/static/cloudy-1-day.svg",
@@ -45,25 +46,24 @@ const Weather = () => {
   const timePro = data.weather[0].icon[2];
   let icon ="";
   if(timePro==="d"){
-     icon = weatherIconsDay[weatherMain] ;
+     icon = (weatherIconsDay[weatherMain]? weatherIconsDay[weatherMain]:weatherIconsDay["Clouds"]) ;
   }
   else{
-     icon = weatherIconsNight[weatherMain] ;
+     icon = (weatherIconsNight[weatherMain]? weatherIconsNight[weatherMain]:weatherIconsNight["Clouds"]) ;
   }
   
 
   const kelvinToCelsius = (k) => (k - 273.15).toFixed(1);
 
-  const toTime = (unix, timezone) =>
-    new Date((unix + timezone) * 1000).toLocaleTimeString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
-    });
 
-  const sunrise = toTime(data.sys.sunrise, data.timezone);
-  const sunset = toTime(data.sys.sunset, data.timezone);
-  
+const toTime = (unix, offsetInSeconds) => {
+  return DateTime.fromSeconds(unix + offsetInSeconds).toUTC().toFormat("HH:mm");
+};
+
+
+const sunrise = toTime(data.sys.sunrise, data.timezone);
+const sunset = toTime(data.sys.sunset, data.timezone);
+
     const handleSubmit = (e) =>{
       e.preventDefault();
       const name = e.target.name.value;
@@ -106,7 +106,7 @@ const Weather = () => {
         <div className="flex justify-center items-center gap-3 w-full">
           <div className="flex justify-center items-center flex-col w-1/2">
             <div className={`w-full flex px-1.5 py-2 rounded-full items-center space-x-1 ${mode?"bg-[#112120]":"bg-gray-200"}  rounded-2xl`}>
-              <BsUmbrellaFill className={`w-7 h-7 bg-[#02ffe2] rounded-full p-1.5`} />
+              <BsUmbrellaFill className={`w-7 h-7 bg-[#02ffe2] text-black rounded-full p-1.5`} />
               <p>Rain: {data.rain?.["1h"] ? "Yes" : "No"}</p>
             </div>
             <div className={`${mode?"bg-[#112120]":"bg-gray-200"} w-full rounded-2xl mt-3 py-4`}>

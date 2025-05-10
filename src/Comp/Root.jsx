@@ -8,7 +8,7 @@ import Weather from "./Weather";
 import SongPlayer from './SongPlayer';
 export const tower = createContext();
 const Root = () => {
-  const [mode, setMode] = useState(false);
+  const [mode, setMode] = useState(true);
   const [show, setShow] = useState(false);
   const food = {
     mode,

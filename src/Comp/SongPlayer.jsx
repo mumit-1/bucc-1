@@ -123,13 +123,13 @@ const SongPlayer = () => {
               onChange={(e) => {
                 audioRef.current.currentTime = e.target.value; // Seek on drag
               }}
-              className={`w-full h-1.5 ${
+              className={`w-full h-1 ${
                 mode ? "bg-gray-700" : "bg-gray-300"
               } rounded-full appearance-none
                  cursor-pointer accent-white
                  [&::-webkit-slider-thumb]:appearance-none
-                 [&::-webkit-slider-thumb]:h-5
-                 [&::-webkit-slider-thumb]:w-5
+                 [&::-webkit-slider-thumb]:h-4
+                 [&::-webkit-slider-thumb]:w-4
                  [&::-webkit-slider-thumb]:rounded-full
                  [&::-webkit-slider-thumb]:bg-[#02ffe2]
                  [&::-webkit-slider-thumb]:border
